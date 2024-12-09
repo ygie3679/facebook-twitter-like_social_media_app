@@ -1,0 +1,272 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: #f2f4f7;
+  direction: ltr;
+  line-height: 1.34;
+  margin: 0px;
+  padding: 0px;
+  unicode-bidi: embed;
+}
+
+.default-fonts {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+}
+
+/*body::-webkit-scrollbar {*/
+/*  width: 12px;*/
+/*}*/
+
+/*body::-webkit-scrollbar-track {*/
+/*  background: #b3e0d9;*/
+/*}*/
+
+/*body::-webkit-scrollbar-thumb {*/
+/*  background-color: darkseagreen;*/
+/*  border-radius: 20px;*/
+/*  border: 3px solid darkolivegreen;*/
+/*}*/
+
+/*body::-webkit-scrollbar-thumb:hover {*/
+/*  background-color: #66bb6a;*/
+/*}*/
+
+.navbar {
+  /*overflow: hidden;*/
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.left-column {
+  /*position: relative;*/
+  flex: 0.33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mid-column {
+  /*position: relative;*/
+  flex:0.33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-column {
+  /*position: relative;*/
+  flex:0.33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/*.navbar-title {*/
+/*  color: white;*/
+/*  font-weight: bold;*/
+/*  float: right;*/
+/*  text-align: center;*/
+/*  padding: 14px 16px;*/
+/*  text-decoration: none;*/
+/*  font-size: 17px;*/
+/*}*/
+
+/*.navbar component {*/
+/*  float: left;*/
+/*  !*background-color: white;*!*/
+/*  text-align: center;*/
+/*  padding: 14px 16px;*/
+/*  text-decoration: none;*/
+/*  font-weight: bold;*/
+/*  font-size: 17px;*/
+/*}*/
+
+.icon {
+  width: 50px;
+  height:50px;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.mid-icon {
+  width: 50px;
+  height:50px;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.mid-icon:hover {
+  background: #f2f4f7;
+}
+
+.mid-icon.active {
+  /*background: #316FF6;*/
+  text-underline-mode: true;
+  color: #316FF6;
+  background: #f2f4f7;
+  border-radius: 50%;
+}
+
+.fb-logo {
+  /*background: red;*/
+  margin: 15px;
+  cursor: pointer;
+  color: #316FF6;
+}
+
+.fb-logo:hover {
+  background-color: #316FF6;
+  color: black;
+}
+
+.search {
+  /*background: orange;*/
+  width: 40px;
+  height:40px;
+  color: grey;
+}
+
+.account {
+  margin: 15px;
+  color: slategrey;
+}
+
+.messenger {
+  width: 40px;
+  height: 40px;
+  color: #1c1e21;
+}
+
+.marketplace {
+  margin: 15px;
+  color: slategrey;
+}
+
+.friends {
+  margin: 15px;
+  color: slategrey
+}
+
+.home {
+  margin: 15px;
+  color: slategrey;
+}
+
+/*.navbar icon {*/
+/*  background-color: red;*/
+/*  text-align: center;*/
+/*  padding: 14px 16px;*/
+/*  text-decoration: none;*/
+/*  font-weight: bold;*/
+/*  font-size: 17px;*/
+/*}*/
+
+h1 {
+  font-size: xxx-large;
+  color: teal;
+}
+
+.typewriter {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-family: monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(60) ;
+  color: slategray;
+}
+
+/*@keyframes typing {*/
+/*  from {*/
+/*    width: 0;*/
+/*  }*/
+/*  to {*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
+
+.box {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box-left {
+  font-size: large;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start
+}
+
+.box-left ul {
+  list-style-type: none;
+  line-height: 1.8;
+  color: teal;
+}
+
+.box-left h1 {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.box-right {
+  font-size: large;
+  color: slategray;
+  line-height: 1.8;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .navbar a {
+    float: none;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: large;
+  }
+
+  .typewriter {
+    top: 10%;
+    font-size: 1.2em;
+  }
+
+  .box {
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .box-left, .box-right {
+    font-size: medium;
+    padding: 10px;
+  }
+}
