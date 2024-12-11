@@ -1,152 +1,73 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Editor,
-  EditorState,
-  RichUtils,
-  convertToRaw,
-  convertFromRaw,
-} from "draft-js";
-import Toolbar from "../Toolbar/Toolbar";
-import "./PostEditor.css";
+// PostEditorWithModal.js
+import React, { useState } from 'react';
+import './PostEditor.css';
 
-const DraftEditor = () => {
-  const [editorState, setEditorState] = useState(
-      EditorState.createWithContent(
-          convertFromRaw({
-            blocks: [
-              {
-                key: "3eesq",
-                text: "A Text-editor with super cool features built in Draft.js.",
-                type: "unstyled",
-                depth: 0,
-                inlineStyleRanges: [
-                  {
-                    offset: 19,
-                    length: 6,
-                    style: "BOLD",
-                  },
-                  {
-                    offset: 25,
-                    length: 5,
-                    style: "ITALIC",
-                  },
-                  {
-                    offset: 30,
-                    length: 8,
-                    style: "UNDERLINE",
-                  },
-                ],
-                entityRanges: [],
-                data: {},
-              },
-              {
-                key: "9adb5",
-                text: "Tell us a story!",
-                type: "header-one",
-                depth: 0,
-                inlineStyleRanges: [],
-                entityRanges: [],
-                data: {},
-              },
-            ],
-            entityMap: {},
-          })
-      )
-  );
-  const editor = useRef(null);
+const PostEditor = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postText, setPostText] = useState('');
 
-  useEffect(() => {
-    focusEditor();
-  }, []);
+  const openModal = () => {
+    setIsModalOpen(true);
+    console.log("Modal openned!")
+  }
+  const closeModal = () => setIsModalOpen(false);
 
-  const focusEditor = () => {
-    editor.current.focus();
-  };
+  const handleTextChange = (e) => setPostText(e.target.value);
 
-  const handleKeyCommand = (command) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      setEditorState(newState);
-      return true;
-    }
-    return false;
-  };
-
-  // FOR INLINE STYLES
-  const styleMap = {
-    CODE: {
-      backgroundColor: "rgba(0, 0, 0, 0.05)",
-      fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-      fontSize: 16,
-      padding: 2,
-    },
-    HIGHLIGHT: {
-      backgroundColor: "#F7A5F7",
-    },
-    UPPERCASE: {
-      textTransform: "uppercase",
-    },
-    LOWERCASE: {
-      textTransform: "lowercase",
-    },
-    CODEBLOCK: {
-      fontFamily: '"fira-code", "monospace"',
-      fontSize: "inherit",
-      background: "#ffeff0",
-      fontStyle: "italic",
-      lineHeight: 1.5,
-      padding: "0.3rem 0.5rem",
-      borderRadius: " 0.2rem",
-    },
-    SUPERSCRIPT: {
-      verticalAlign: "super",
-      fontSize: "80%",
-    },
-    SUBSCRIPT: {
-      verticalAlign: "sub",
-      fontSize: "80%",
-    },
-  };
-
-  // FOR BLOCK LEVEL STYLES(Returns CSS Class From DraftEditor.css)
-  const myBlockStyleFn = (contentBlock) => {
-    const type = contentBlock.getType();
-    switch (type) {
-      case "blockQuote":
-        return "superFancyBlockquote";
-      case "leftAlign":
-        return "leftAlign";
-      case "rightAlign":
-        return "rightAlign";
-      case "centerAlign":
-        return "centerAlign";
-      case "justifyAlign":
-        return "justifyAlign";
-      default:
-        break;
-    }
+  const handlePost = () => {
+    console.log('Post:', postText);
+    closeModal();
+    setPostText(''); // Reset text after posting
   };
 
   return (
-      <div className="editor-wrapper" onClick={focusEditor}>
-        <Toolbar editorState={editorState} setEditorState={setEditorState} />
-        <div className="editor-container">
-          <Editor
-              ref={editor}
-              placeholder="Write Here"
-              handleKeyCommand={handleKeyCommand}
-              editorState={editorState}
-              customStyleMap={styleMap}
-              blockStyleFn={myBlockStyleFn}
-              onChange={(editorState) => {
-                const contentState = editorState.getCurrentContent();
-                console.log(convertToRaw(contentState));
-                setEditorState(editorState);
-              }}
-          />
+      <div className="page-container">
+        <div className="left-column"></div>
+        <div className="middle-column">
+          <div className="post-editor-container">
+            <div className="post-editor-header">
+              <div className="profile-pic"></div>
+              <textarea
+                  placeholder="What's on your mind?"
+                  onClick={openModal}
+                  readOnly
+                  className="post-editor-textarea"
+              />
+            </div>
+
+            <div className="post-editor-actions">
+              <button className="action-button">🎥 Live video</button>
+              <button className="action-button">📷 Photo/video</button>
+              <button className="action-button">😊 Feeling/activity</button>
+            </div>
+          </div>
         </div>
+        <div className="right-column"></div>
+
+        {isModalOpen && (
+            <div className="modal-overlay">
+              <div className="modal-content">
+                <textarea
+                    placeholder="What's on your mind?"
+                    onChange={handleTextChange}
+                    className="modal-textarea"
+                />
+                <div className='post-editor-actions'>
+                  <button className="action-button">🎥 Upload video</button>
+                  <button className="action-button">📷 Upload Photo</button>
+                  <button className="action-button">😊 Feeling/activity</button>
+                </div>
+                <button className="modal-close" onClick={closeModal}>
+                  Close
+                </button>
+                <button className="modal-post" onClick={handlePost}>
+                  Post your status update
+                </button>
+              </div>
+            </div>
+        )}
       </div>
   );
 };
 
-export default DraftEditor;
+export default PostEditor;

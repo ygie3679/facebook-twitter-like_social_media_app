@@ -1,0 +1,195 @@
+/** {*/
+/*  margin: 0px;*/
+/*  padding: 0px;*/
+/*}*/
+
+.navbar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.left-column {
+  /*position: relative;*/
+  flex: 0.33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mid-column {
+  /*position: relative;*/
+  flex:0.33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-column {
+  /*position: relative;*/
+  flex:0.33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon {
+  width: 50px;
+  height:50px;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.mid-icon {
+  width: 50px;
+  height:50px;
+  text-align: center;
+  padding: 10px 10px;
+  color: slategrey;
+  margin: 15px;
+}
+
+.mid-icon:hover {
+  background: #f2f4f7;
+}
+
+.mid-icon.active {
+  text-underline-mode: true;
+  color: #316FF6;
+  background: #f2f4f7;
+  border-radius: 50%;
+}
+
+.fb-logo {
+  margin: 15px;
+  cursor: pointer;
+  color: #316FF6;
+}
+
+.fb-logo:hover {
+  background-color: #316FF6;
+  color: black;
+}
+
+.search {
+  width: 40px;
+  height:40px;
+  color: grey;
+}
+
+.account {
+  margin: 15px;
+  color: slategrey;
+}
+
+.messenger {
+  width: 40px;
+  height: 40px;
+  color: #1c1e21;
+}
+
+/*h1 {*/
+/*  font-size: xxx-large;*/
+/*  color: teal;*/
+/*}*/
+
+/*.typewriter {*/
+/*  margin-top: 10%;*/
+/*  margin-bottom: 10%;*/
+/*  font-family: monospace;*/
+/*  white-space: nowrap;*/
+/*  overflow: hidden;*/
+/*  width: 0;*/
+/*  animation: typing 4s steps(60) ;*/
+/*  color: slategray;*/
+/*}*/
+
+/*@keyframes typing {*/
+/*  from {*/
+/*    width: 0;*/
+/*  }*/
+/*  to {*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
+
+.box {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.box-left {
+  font-size: large;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start
+}
+
+.box-left ul {
+  list-style-type: none;
+  line-height: 1.8;
+  color: teal;
+}
+
+.box-left h1 {
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+
+.box-right {
+  font-size: large;
+  color: slategray;
+  line-height: 1.8;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .navbar a {
+    float: none;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: large;
+  }
+
+  .typewriter {
+    top: 10%;
+    font-size: 1.2em;
+  }
+
+  .box {
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .box-left, .box-right {
+    font-size: medium;
+    padding: 10px;
+  }
+}
