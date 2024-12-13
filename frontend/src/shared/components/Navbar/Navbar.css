@@ -1,14 +1,9 @@
-/** {*/
-/*  margin: 0px;*/
-/*  padding: 0px;*/
-/*}*/
-
 .navbar {
   background-color: #fff;
   position: fixed;
   top: 0;
-  height: 80px;
   width: 100%;
+  height: 80px;
   z-index: 1000;
   display: flex;
   flex-direction: row;
@@ -16,27 +11,27 @@
   justify-content: flex-start;
 }
 
-.left-column {
+.left-part {
   /*position: relative;*/
-  flex: 0.33;
+  flex: 0.3;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
 
-.mid-column {
+.mid-part {
   /*position: relative;*/
-  flex:0.33;
+  flex:0.4;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.right-column {
+.right-part {
   /*position: relative;*/
-  flex:0.33;
+  flex:0.3;
   display: flex;
   flex-direction: row;
   align-items: center;

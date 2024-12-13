@@ -1,0 +1,40 @@
+body {
+  background: #f2f4f7;
+  direction: ltr;
+  line-height: 1.34;
+  margin: 0px;
+  padding: 0px;
+  unicode-bidi: embed;
+  height: 100%;
+}
+
+.out-container {
+  height: 100px;
+}
+
+.page-container {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f2f5;
+}
+
+.column-container {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  justify-content: center;
+  align-self: end;
+}
+
+.left-column,
+mid-column,
+.right-column {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.left-column{
+  padding-left: 10px;
+  border-right: 1px solid #ddd;
+}

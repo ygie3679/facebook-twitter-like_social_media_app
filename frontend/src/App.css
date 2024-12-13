@@ -1,12 +1,3 @@
-body {
-  background: #f2f4f7;
-  direction: ltr;
-  line-height: 1.34;
-  margin: 0px;
-  padding: 0px;
-  unicode-bidi: embed;
-}
-
 .default-fonts {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
 }

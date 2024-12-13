@@ -3,6 +3,7 @@ import './Navbar.css';
 import { FaFacebook, FaSearch, FaUserCircle,
         FaFacebookMessenger, FaHome, FaUserFriends } from 'react-icons/fa';
 import { IoStorefrontOutline } from "react-icons/io5";
+import UserLogo from "../../../users/components/UserLogo/UserLogo";
 
 const Navbar = () => {
   const [isHomeActive, setIsHomeActive] = useState(false);
@@ -45,23 +46,26 @@ const Navbar = () => {
   );
 
   return (
-      <div className='navbar'>
-        <div className='left-column'>
-          <FaFacebook className="fb-logo icon"/>
-          <FaSearch className='search icon'/>
-        </div>
+        <div className='navbar'>
+          <div className='left-part'>
+            <FaFacebook className="fb-logo icon"/>
+            <FaSearch className='search icon'/>
+          </div>
 
-        <div className='mid-column'>
-          <NavIcon icon={FaHome} isActive={isHomeActive} onClick={handleHomeClick} />
-          <NavIcon icon={FaUserFriends} isActive={isFriendsActive} onClick={handleFriendsClick} />
-          <NavIcon icon={IoStorefrontOutline} isActive={isMarketActive} onClick={handleMarketClick} />
-        </div>
+          <div className='mid-part'>
+            <NavIcon icon={FaHome} isActive={isHomeActive}
+                     onClick={handleHomeClick}/>
+            <NavIcon icon={FaUserFriends} isActive={isFriendsActive}
+                     onClick={handleFriendsClick}/>
+            <NavIcon icon={IoStorefrontOutline} isActive={isMarketActive}
+                     onClick={handleMarketClick}/>
+          </div>
 
-        <div className='right-column'>
-          <FaFacebookMessenger className='messenger icon'/>
-          <FaUserCircle className='account icon'/>
+          <div className='right-part'>
+            <FaFacebookMessenger className='messenger icon'/>
+            <UserLogo className='account icon'/>
+          </div>
         </div>
-      </div>
   );
 }
 
