@@ -1,3 +1,7 @@
+.post-feed {
+  max-width: 600px;
+  margin-top: 20px;
+}
 
 .post {
   border: 1px solid #ddd;

@@ -30,6 +30,20 @@ const getUsersById = async (req, res, next) => {
   }
 };
 
+const updateUserDescription = async (req, res, next) => {
+  const userId = req.params.userId;
+  const {description} = req.body;
+  let user;
+  try {
+    user = await User.findById(userId, "-password");
+    user.description = description;
+    await user.save();
+    res.json(user);
+  } catch (error) {
+    return res.status(500).json({error: "Fetching users failed"});
+  }
+};
+
 const account = async (req, res) => {
   const token = req.cookies.jwt;
   if (!token) {
@@ -116,6 +130,7 @@ const login = async (req, res, next) => {
         "Not a registered user or correct email address. Please signup or try again.",
         403
     );
+    alert("Not a registered user! Please signup or enter again.")
     return next(error);
   }
 
@@ -127,6 +142,8 @@ const login = async (req, res, next) => {
         "Could not log in. Please check your credentials and try again.",
         500
     );
+    alert("Could not log in. Please check your credentials and try again.")
+
     return next(error);
   }
   if (!isValidPassword) {
@@ -166,3 +183,4 @@ exports.login = login;
 exports.account = account;
 exports.logout = logout;
 exports.getUsersById = getUsersById;
+exports.updateUserDescription = updateUserDescription;

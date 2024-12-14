@@ -2,26 +2,6 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
 }
 
-/*.typewriter {*/
-/*  margin-top: 10%;*/
-/*  margin-bottom: 10%;*/
-/*  font-family: monospace;*/
-/*  white-space: nowrap;*/
-/*  overflow: hidden;*/
-/*  width: 0;*/
-/*  animation: typing 4s steps(60) ;*/
-/*  color: slategray;*/
-/*}*/
-
-/*@keyframes typing {*/
-/*  from {*/
-/*    width: 0;*/
-/*  }*/
-/*  to {*/
-/*    width: 100%;*/
-/*  }*/
-/*}*/
-
 .box {
   display: flex;
   justify-content: center;
@@ -29,31 +9,6 @@
   margin: 0 10px;
   padding: 20px;
   box-sizing: border-box;
-}
-
-.box-left {
-  font-size: large;
-  flex-direction: column;
-  justify-content: left;
-  align-items: flex-start
-}
-
-.box-left ul {
-  list-style-type: none;
-  line-height: 1.8;
-  color: teal;
-}
-
-.box-left h1 {
-  margin-bottom: 15px;
-  margin-top: 10px;
-}
-
-.box-right {
-  font-size: large;
-  color: slategray;
-  line-height: 1.8;
-  flex-direction: column;
 }
 
 @media (max-width: 600px) {

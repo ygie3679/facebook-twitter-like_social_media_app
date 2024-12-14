@@ -7,6 +7,9 @@ const Modal = ({modalOpen, onClose, onChange, children}) => {
   return (
       <div className='modal-overlay'>
         <div className='modal-content'>
+          <button className="modal-close-button" onClick={onClose}>
+            x
+          </button>
           <textarea
               placeholder="What's on your mind?"
               className="modal-textarea"
@@ -18,9 +21,6 @@ const Modal = ({modalOpen, onClose, onChange, children}) => {
             <button className="action-button">😊 Feeling/activity</button>
             <button className="action-button">📍 Location</button>
           </div>
-          <button className="modal-close-button" onClick={onClose}>
-            x
-          </button>
           {children}
         </div>
       </div>

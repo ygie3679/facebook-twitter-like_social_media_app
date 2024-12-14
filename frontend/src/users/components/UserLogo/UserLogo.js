@@ -23,7 +23,7 @@ const UserLogo = () => {
       }
     };
     fetchProfile();
-  });
+  }, []);
 
   const handleSignin = async () => {
     const res = await userSignin(email, password);
@@ -33,7 +33,6 @@ const UserLogo = () => {
       console.log(res.params);
       console.log(userId);
       setModalOpen(false);
-      navigate(`/user/${userId}`);
     }
   };
 
@@ -46,12 +45,11 @@ const UserLogo = () => {
 
   const handleLogout = async () => {
     await logout();
+    navigate(`/`);
   };
 
   const goToAccount = () => {
-    // window.location.href = "/account";
     const userId = user.userId;
-    console.log("here!!!userId", userId);
     navigate(`/user/${userId}`);
   };
 

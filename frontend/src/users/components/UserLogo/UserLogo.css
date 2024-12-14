@@ -1,12 +1,21 @@
 .user-logo-container {
   text-align: center;
   font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-right: 20px;
 }
 
 .user-logo {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.user-logo-avatar:hover{
+  background: #cccccc;
+  border-radius: 0;
 }
 
 .userModal {
@@ -17,8 +26,8 @@
 }
 
 .user-logo-avatar {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   margin-right: 10px;
   border: 1px solid lightslategray;

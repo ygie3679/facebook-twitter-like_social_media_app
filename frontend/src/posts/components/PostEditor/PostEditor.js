@@ -36,7 +36,7 @@ const PostEditor = () => {
     if (postText.trim() === '') return; // Ignore empty posts
     const newPost = {
       content: postText,
-      timestamp: Date.now(), // Add a timestamp
+      timestamp: `${Date.now().toString().slice(0,10)} ${Date.now().toString().slice(12,16)}` // Add a timestamp
     };
     await createPost(postText, user.userId);
     fetchPosts();
@@ -51,7 +51,6 @@ const PostEditor = () => {
       <div className="outside-container">
         <div className="post-editor-container">
           <div className="post-editor-header">
-            <div className="profile-pic"></div>
             <textarea
                 placeholder="What's on your mind?"
                 onClick={openModal}

@@ -1,5 +1,6 @@
 import React, {useContext, useState} from "react";
 import * as service from "../users/hooks/Auth";
+import {putUserDescription} from "../users/hooks/Auth";
 
 const Profile_context = React.createContext();
 

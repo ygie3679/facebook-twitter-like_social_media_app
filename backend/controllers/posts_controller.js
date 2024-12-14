@@ -3,12 +3,11 @@ const Post = require("../models/post_model");
 const jwt = require("jsonwebtoken");
 const {validationResult} = require("express-validator");
 const HttpError = require("../models/HttpError");
-// let userId;
 
 const getPostsByUserId = async (req, res) => {
   const userId = req.params.uid;
   try {
-    const posts = await Post.find({userId: userId});
+    const posts = await Post.find({userId: userId}).populate('userId');
     res.json(posts);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -36,8 +35,6 @@ const authenticate = (req, res, next) => {
 };
 
 const createPost = async (req, res) => {
-  // const { content } = req.body;
-  // if (!content) return res.status(400).json({ error: 'Please enter contents.'});
   const {content, userId} = req.body;
   try {
     const post = new Post({ content, userId });
@@ -50,7 +47,6 @@ const createPost = async (req, res) => {
 
 const deletePost = async (req, res, next) => {
   const postId = req.params['pid'];
-  console.log(req.params);
   let post;
   try {
     post = await Post.findById(postId).populate("userId");
@@ -63,21 +59,8 @@ const deletePost = async (req, res, next) => {
     const error = new HttpError("Failed to find this post", 404);
     return next(error);
   }
-  //
-  // if (post.userId !== req.userData.userId) {
-  //   res.status(400).json({error: "Not allowed to delete this post!"});
-  // }
-
   try {
     await Post.findByIdAndDelete(postId);
-    // const ses = await mongoose.startSession();
-    // ses.startTransaction();
-    // await post.deleteOne({ session: ses });
-    // userId =
-    // //Pull will automatically remove the place's id only
-    // post.userId.status_updates.pull(post);
-    // await post.userId.save({ session: ses });
-    // await ses.commitTransaction();
   } catch (err) {
     const error = new HttpError("Could not delete the post.", 500);
     return next(error);
@@ -87,10 +70,6 @@ const deletePost = async (req, res, next) => {
 };
 
 const updatePost = async (req, res, next) => {
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   res.status(422).json({ error: "Something went wrong. Failed to update the post." });
-  // }
 
   const { content } = req.body;
   const postId = req.params.pid;
@@ -104,10 +83,11 @@ const updatePost = async (req, res, next) => {
   }
 
   //If current user isn't the creator of this post
-  // if (post.userId.toString() !== req.userData.userId) {
-  //   const error = new HttpError("No authorization to edit this post.", 401);
-  //   return next(error);
-  // }
+  if (post.userId.toString() !== req.userData.userId) {
+    const error = new HttpError("No authorization to edit this post.", 401);
+    alert("You can only edit your post!");
+    return next(error);
+  }
 
   post.content = content;
 

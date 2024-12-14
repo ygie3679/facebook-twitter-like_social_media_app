@@ -15,8 +15,10 @@ export const signin = async (email, password) => {
   return response
 }
 
-export const account = async () => {
+export const account = async (userId) => {
+  // const response = await api.get(`${API_URL}/${userId}`)
   const response = await api.get(`${API_URL}/account`)
+
   return response.data
 }
 
@@ -27,6 +29,10 @@ export const logout = async () => {
 
 export const getUserById = async (userId) => {
   const response = await api.get(`${API_URL}/${userId}`)
-  console.log(userId, "printed userId")
+  return response.data
+}
+
+export const putUserDescription = async (description, userId) => {
+  const response = await api.put(`${API_URL}/${userId}`, {description})
   return response.data
 }

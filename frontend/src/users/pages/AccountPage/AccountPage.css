@@ -21,7 +21,7 @@ body {
 }
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -36,6 +36,9 @@ body {
 }
 
 .search-bar {
+  width: 262px;
+  margin-left: 10px;
+  align-self: flex-start;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -58,7 +61,6 @@ input {
 
 .accounts-center h2 {
   font-size: 18px;
-  /*margin-bottom: 10px;*/
 }
 
 .box {
@@ -100,34 +102,144 @@ input {
   gap: 20px;
 }
 
-/*.card {*/
-/*  padding: 20px;*/
-/*  background-color: #fff;*/
-/*  border-radius: 6px;*/
-/*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-/*}*/
+.right-column{
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
 
-/*.card h3 {*/
-/*  margin: 10px 0;*/
-/*}*/
+.edit-button {
+  border-radius: 15px;
+  border: 1px solid lightslategray;
+  align-self: flex-start;
+  margin-left: 0px;
+  margin-top: 10px;
+}
 
-/*.card p {*/
-/*  margin: 0;*/
-/*  color: #555;*/
-/*}*/
+.user-info {
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
-/*.footer {*/
-/*  margin-top: 20px;*/
-/*}*/
+h2 {
+  font-family: InaiMathi, serif;
+}
 
-/*.footer .tools {*/
-/*  display: flex;*/
-/*  flex-wrap: wrap;*/
-/*  gap: 10px;*/
-/*}*/
+.empty-bg{
+  color: cornflowerblue;
+  text-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  font-family: InaiMathi, sans-serif;
+  font-size: 30px;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
 
-/*.footer .tool {*/
-/*  text-decoration: none;*/
-/*  color: #007bff;*/
-/*  font-size: 14px;*/
-/*}*/
+.mid-col-user {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.post-feed-user {
+  width: 90%;
+  max-width: 600px;
+}
+
+.user-header {
+  margin-bottom: 10px;
+  margin-left: 0;
+  position: relative;
+  right: 30%;
+}
+
+.user-header h1 {
+  font-size: 25px;
+  margin-left: 10px;
+  font-family: InaiMathi;
+  text-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  color: midnightblue;
+}
+
+.des-button {
+  margin-left: 0;
+  margin-right: 10px;
+  padding: 0;
+  width: 70px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    grid-template-rows: auto;
+    margin-top: 70px; /* Smaller offset for mobile */
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-bar {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .mid-col-user {
+    border: none;
+    width: 100%;
+  }
+
+  .post-feed-user {
+    width: 100%;
+  }
+
+  .right-column {
+    margin: 0;
+    padding: 10px;
+  }
+
+  .accounts-center {
+    width: 100%;
+  }
+
+  .user-info {
+    width: 100%;
+    gap: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .empty-bg {
+    font-size: 20px;
+  }
+
+  .edit-button {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+

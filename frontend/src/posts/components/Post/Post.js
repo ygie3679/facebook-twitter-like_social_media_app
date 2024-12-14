@@ -44,8 +44,6 @@ const Post = ({ content, timestamp, username, deletable, postId, onFetchPost, us
     navigate(`/user/${userId}`);
   }
 
-  console.log("timestamp", timestamp);
-
   return (
       <div className="post">
         <div className="post-header">

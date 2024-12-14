@@ -22,5 +22,6 @@ router.post(
 router.post("/login", userController.login);
 router.get("/logout", userController.logout);
 router.get("/:userId", userController.getUsersById);
+router.put("/:userId", userController.updateUserDescription);
 
 module.exports = router;
