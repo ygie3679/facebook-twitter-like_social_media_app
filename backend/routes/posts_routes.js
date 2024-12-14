@@ -6,16 +6,8 @@ const postsController = require("../controllers/posts_controller");
 
 router.get("/user/:uid", postsController.getPostsByUserId);
 router.get("/", postsController.getPosts);
-
-// router.use(checkAuth);
-
-router.patch(
-    "/:pid",
-    [
-      check("textContent").not().isEmpty(),],
-    postsController.updatePost
-);
-
+router.post("/", postsController.createPost);
 router.delete("/:pid", postsController.deletePost);
+router.put("/:pid", postsController.updatePost);
 
 module.exports = router;

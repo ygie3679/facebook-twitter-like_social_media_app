@@ -1,0 +1,133 @@
+body {
+  background: #f2f4f7;
+  direction: ltr;
+  line-height: 1.34;
+  margin: 0px;
+  padding: 0px;
+  unicode-bidi: embed;
+  height: 100vh;
+}
+
+.out-container {
+  height: 100px;
+}
+
+.page-container {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f2f5;
+}
+
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header h1 {
+  font-size: 25px;
+  margin-left: 10px;
+  font-family: InaiMathi;
+  text-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  color: midnightblue;
+}
+
+.search-bar {
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+}
+
+input {
+  display: block;
+  padding: 20px;
+  width: 80%;
+  max-width: 300px;
+  align-self: center;
+}
+
+.accounts-center {
+  margin-bottom: 20px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.accounts-center h2 {
+  font-size: 18px;
+  /*margin-bottom: 10px;*/
+}
+
+.box {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0.3, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 15px;
+}
+
+.box ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  text-align: start;
+  margin-bottom: 20px;
+}
+
+.box ul li {
+  margin: 5px 0;
+}
+
+.box a {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.most-visited h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/*.card {*/
+/*  padding: 20px;*/
+/*  background-color: #fff;*/
+/*  border-radius: 6px;*/
+/*  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+/*}*/
+
+/*.card h3 {*/
+/*  margin: 10px 0;*/
+/*}*/
+
+/*.card p {*/
+/*  margin: 0;*/
+/*  color: #555;*/
+/*}*/
+
+/*.footer {*/
+/*  margin-top: 20px;*/
+/*}*/
+
+/*.footer .tools {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  gap: 10px;*/
+/*}*/
+
+/*.footer .tool {*/
+/*  text-decoration: none;*/
+/*  color: #007bff;*/
+/*  font-size: 14px;*/
+/*}*/

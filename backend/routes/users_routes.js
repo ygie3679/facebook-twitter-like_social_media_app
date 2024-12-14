@@ -8,7 +8,7 @@ const router = express.Router();
 
 //Use placesControllers to get the pointer of getPlaceById
 router.get("/", userController.getUsers);
-router.post("/account", userController.findUserByCredentials);
+router.get("/account", userController.account);
 
 router.post(
     "/signup",
@@ -20,5 +20,7 @@ router.post(
 );
 
 router.post("/login", userController.login);
+router.get("/logout", userController.logout);
+router.get("/:userId", userController.getUsersById);
 
 module.exports = router;

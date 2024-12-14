@@ -38,3 +38,8 @@ mid-column,
   padding-left: 10px;
   border-right: 1px solid #ddd;
 }
+
+.right-column{
+  padding-right: 10px;
+  border-left: 1px solid #ddd;
+}

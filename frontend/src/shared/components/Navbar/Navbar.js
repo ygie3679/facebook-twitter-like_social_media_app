@@ -4,8 +4,10 @@ import { FaFacebook, FaSearch, FaUserCircle,
         FaFacebookMessenger, FaHome, FaUserFriends } from 'react-icons/fa';
 import { IoStorefrontOutline } from "react-icons/io5";
 import UserLogo from "../../../users/components/UserLogo/UserLogo";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isHomeActive, setIsHomeActive] = useState(false);
   const [isFriendsActive, setIsFriendsActive] = useState(false);
   const [isMarketActive, setIsMarketActive] = useState(false);
@@ -18,6 +20,8 @@ const Navbar = () => {
     if (isMarketActive) {
       setIsMarketActive(!isMarketActive);
     }
+    navigate('/');
+    console.log("navigated to home");
   };
   const handleFriendsClick = () => {
     setIsFriendsActive(!isFriendsActive);
@@ -54,7 +58,8 @@ const Navbar = () => {
 
           <div className='mid-part'>
             <NavIcon icon={FaHome} isActive={isHomeActive}
-                     onClick={handleHomeClick}/>
+                     onClick={handleHomeClick}
+            />
             <NavIcon icon={FaUserFriends} isActive={isFriendsActive}
                      onClick={handleFriendsClick}/>
             <NavIcon icon={IoStorefrontOutline} isActive={isMarketActive}

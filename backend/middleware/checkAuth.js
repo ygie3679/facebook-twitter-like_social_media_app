@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
   try {
-    console.log("Check auth: here");
     const token = req.headers.authorization.split(" ")[1];
     //Handles error when headers does not contain a token
     if (!token) {

@@ -19,7 +19,7 @@ const Modal = ({modalOpen, onClose, onChange, children}) => {
             <button className="action-button">📍 Location</button>
           </div>
           <button className="modal-close-button" onClick={onClose}>
-            Close
+            x
           </button>
           {children}
         </div>

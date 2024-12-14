@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import PostEditor from "../../../posts/components/PostEditor/PostEditor";
-import LeftMenu from "../../components/FormElements/LeftMenu";
+import LeftMenu from "../../components/LeftMenu/LeftMenu";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -18,7 +18,6 @@ const HomePage = () => {
           <div className="mid-column">
             <PostEditor/>
           </div>
-
         </div>
       </div>
   )

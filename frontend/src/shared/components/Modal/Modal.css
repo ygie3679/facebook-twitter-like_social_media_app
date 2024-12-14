@@ -43,12 +43,11 @@
 }
 
 .modal-close-button {
-  background: #f0f2f5;
   color: #606770;
 }
 
 .modal-close-button:hover {
-  background: #ddd;
+  color: black;
 }
 
 .modal-actions {

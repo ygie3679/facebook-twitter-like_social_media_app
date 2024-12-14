@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './PostEditor.css';
 import Modal from "../../../shared/components/Modal/Modal";
 import Post from "../Post/Post";
+import {createPost, getAllPosts} from "../../Hooks/Post_hook";
+import {useProfile} from "../../../contexts/Profile_context";
 
 const PostEditor = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [postText, setPostText] = useState("");
   const [posts, setPosts] = useState([]); // Array to store posts
+
+  const {user} = useProfile()
+
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
@@ -14,18 +19,33 @@ const PostEditor = () => {
     setPostText(e.target.value);
   };
 
-  const handlePost = () => {
+  const fetchPosts = async () => {
+    try {
+      const posts = await getAllPosts();
+      setPosts(posts);
+    } catch {
+      console.log("Get all posts failed");
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
+  const handlePost = async () => {
     if (postText.trim() === '') return; // Ignore empty posts
     const newPost = {
       content: postText,
       timestamp: Date.now(), // Add a timestamp
     };
-    setPosts([newPost, ...posts]); // Add new post at the top of the array
+    await createPost(postText, user.userId);
+    fetchPosts();
     setPostText(''); // Clear input
     setModalOpen(false); // Close Modal
-    // return posts;
-    console.log("now the posts are: ", posts);
   };
+
+  console.log(posts);
+  console.log(posts[0]);
 
   return (
       <div className="outside-container">
@@ -59,7 +79,15 @@ const PostEditor = () => {
         {/* Display posts */}
         <div className="post-feed">
           {posts.map((post, index) => (
-              <Post key={index} content={post.content} timestamp={post.timestamp} />
+              <Post
+                  key={index}
+                  content={post.content}
+                  timestamp={post.createdAt}
+                  username={post.userId.username}
+                  deletable={post.userId._id === user?.userId}
+                  postId={post._id}
+                  onFetchPost={fetchPosts}
+                  userId={post.userId._id} />
           ))}
         </div>
       </div>

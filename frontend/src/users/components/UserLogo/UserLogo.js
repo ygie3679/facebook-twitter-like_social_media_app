@@ -1,74 +1,69 @@
 import React, { useState, useEffect } from "react";
-import { signup, signin, account, logout } from "/Users/gina/Documents/Study/NEU/CSA/Term1/5610WebDev/Assignments/Projects/project3/facebook-twitter-like_social_media_app/frontend/src/users/pages/Auth.js";
 import UserModal from "../UserModal/UserModal";
 import "./UserLogo.css";
+import {useProfile} from "../../../contexts/Profile_context";
+import { useNavigate } from 'react-router-dom';
 
 const UserLogo = () => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [modalType, setModalType] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const {user, userSignin, checkLoggedIn, userSignup, logout} = useProfile()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const data = await account();
-        setUser(data.user);
-        setIsAuthenticated(true);
+        await checkLoggedIn();
       } catch {
         console.log("Not authenticated");
       }
     };
     fetchProfile();
-  }, []);
+  });
 
   const handleSignin = async () => {
-    try {
-      const data = await signin(email, password);
-      setUser(data);
-      setIsAuthenticated(true);
+    const res = await userSignin(email, password);
+
+    if (res) {
+      const userId = res.userId;
+      console.log(res.params);
+      console.log(userId);
       setModalOpen(false);
-    } catch (error) {
-      console.error("Error during signin:", error);
+      navigate(`/user/${userId}`);
     }
   };
 
   const handleSignup = async () => {
-    try {
-      const data = await signup(email, password);
-      setUser(data);
-      setIsAuthenticated(true);
+    const res = await userSignup(email, username, password);
+    if (res) {
       setModalOpen(false);
-    } catch (error) {
-      console.error("Error during signup:", error);
     }
   };
 
   const handleLogout = async () => {
-    try {
-      await logout();
-      setUser(null);
-      setIsAuthenticated(false);
-    } catch (error) {
-      console.error("Error during logout:", error);
-    }
+    await logout();
   };
 
   const goToAccount = () => {
-    window.location.href = "/account";
+    // window.location.href = "/account";
+    const userId = user.userId;
+    console.log("here!!!userId", userId);
+    navigate(`/user/${userId}`);
   };
 
   return (
       <div className="user-logo-container">
-        {isAuthenticated ? (
-            <div className="user-logo" onClick={goToAccount}>
+        {user ? (
+            <div className="user-logo">
               <img
-                  src={user?.avatar || "/default-avatar.png"}
-                  alt="User Avatar"
+                  src={user?.avatar || "https://img.freepik.com/premium-vector/flat-cute-santa-claus-christmas-avatar-icon-vector-isolated-white-background_1035836-31.jpg?w=996"}
+                  alt="Avatar"
                   className="user-logo-avatar"
+                  onClick={goToAccount}
               />
               <button onClick={handleLogout}>Logout</button>
             </div>
@@ -83,19 +78,18 @@ const UserLogo = () => {
 
               <UserModal modalOpen={modalOpen} onClose={() => setModalOpen(false)}>
                 {modalType === "signup" ? (
-                    <div>
+                    <div className="userModal">
                       <h2>Sign Up</h2>
-                      <input
-                          type="text"
-                          placeholder="Username"
-                          value={username}
-                          onChange={(e) => setUsername(e.target.value)}
-                      />
                       <input
                           type="email"
                           placeholder="Email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
+                      />
+                      <input
+                          placeholder="Username"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
                       />
                       <input
                           type="password"
@@ -106,7 +100,7 @@ const UserLogo = () => {
                       <button onClick={handleSignup}>Sign Up</button>
                     </div>
                 ) : (
-                    <div>
+                    <div className="userModal">
                       <h2>Sign In</h2>
                       <input
                           type="email"

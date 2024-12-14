@@ -1,10 +1,11 @@
 .left-menu {
   background-color: #f0f2f5;
   padding: 16px;
-  height: 100vh; /* Full height */
+  height: 100vh;
+  padding-top:0px;
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Space between menu items */
+  gap: 12px;
 }
 
 .menu-item {
