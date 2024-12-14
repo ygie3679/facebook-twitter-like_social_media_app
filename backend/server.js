@@ -33,6 +33,6 @@ app.get('/', (request, response) => {
   response.send("Welcome to WebDev");
 });
 
-app.listen(8000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://localhost:8000`);
 });
