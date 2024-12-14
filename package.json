@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "bootstrap": "^5.3.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "draft-js": "^0.11.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.4",
+    "mongoose-unique-validator": "^4.0.1",
+    "nodemon": "^3.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+  }
+}
