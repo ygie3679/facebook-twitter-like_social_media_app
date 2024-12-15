@@ -16,5 +16,26 @@
     "nodemon": "^3.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-  }
+    "react-scripts": "^5.0.1"
+  },
+  "name": "facebook-twitter-like_social_media_app",
+  "version": "1.0.0",
+  "description": "This is the repository for CS5610 Fall2024 Project3 - Full-stack social media app like Twitter/Facebook.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ygie3679/facebook-twitter-like_social_media_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ygie3679/facebook-twitter-like_social_media_app/issues"
+  },
+  "homepage": "https://github.com/ygie3679/facebook-twitter-like_social_media_app#readme"
 }

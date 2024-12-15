@@ -50,7 +50,10 @@ const account = async (req, res) => {
     return res.status(401).json({message: 'Not authenticated'});
   }
   try {
-    const decoded = jwt.verify(token, 'super_secret');
+    const decoded = jwt.verify(token,
+        // process.env.JWT_PRIVATE_KEY
+        'super_secret'
+    );
     const user  = await User.findOne({email: decoded.email});
     res.status(200).json({
       userId: user.id,
@@ -78,6 +81,7 @@ const signup = async (req, res, next) => {
         "User exists already. Please login instead. ",
         422
     );
+    alert("User exists already. Please login instead. ");
     return next(error);
   }
   ;
@@ -101,12 +105,13 @@ const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
         {userId: newUser.id, email: newUser.email},
-        process.env.WT_PRIVATE_KEY,
+        "super_secret",
+        // process.env.WT_PRIVATE_KEY,
         {expiresIn: "7d"}
     );
   } catch (err) {
-    const error = new HttpError("Signing up failed. Pleae try again. ", 500);
-    return next(error);
+    const error = new HttpError("Signing up failed. Please try again. ", 500);
+    // return next(error);
   }
   res.cookie('jwt', token, { httpOnly: true, path: '/', secure: false });
   res.status(201).json(
@@ -154,7 +159,8 @@ const login = async (req, res, next) => {
   try {
     token = jwt.sign(
         {userId: existingUser.id, email: existingUser.email},
-        process.env.JWT_PRIVATE_KEY,
+        "super_secret",
+        // process.env.JWT_PRIVATE_KEY,
         {expiresIn: "7d"}
     );
   } catch (err) {

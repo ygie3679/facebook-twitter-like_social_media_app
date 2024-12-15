@@ -3,14 +3,14 @@ import './Post.css';
 import {deletePost, editPost, getAllPosts} from "../../Hooks/Post_hook";
 import { useNavigate } from 'react-router-dom';
 import UserModal from "../../../users/components/UserModal/UserModal";
-
+import {useProfile} from "../../../contexts/Profile_context";
 
 const Post = ({ content, timestamp, username, deletable, postId, onFetchPost, userId }) => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]); // Array to store posts
   const [postText, setPostText] = useState("");
-  const [isEditClicked, setEditClicked] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const {user} = useProfile();
 
   const handleInputChange = (e) => {
     setPostText(e.target.value);
@@ -35,7 +35,6 @@ const Post = ({ content, timestamp, username, deletable, postId, onFetchPost, us
   }
 
   async function handleEdit() {
-    setEditClicked(true);
     await handleInputChange;
     onFetchPost();
   }
@@ -48,7 +47,7 @@ const Post = ({ content, timestamp, username, deletable, postId, onFetchPost, us
       <div className="post">
         <div className="post-header">
           <img
-              src="https://via.placeholder.com/40" // Placeholder avatar
+              src={user?.avatar || "https://img.freepik.com/premium-vector/flat-cute-santa-claus-christmas-avatar-icon-vector-isolated-white-background_1035836-31.jpg?w=996"}
               alt="User avatar"
               className="post-avatar"
           />

@@ -55,7 +55,7 @@ const AccountPage = () => {
         console.log(error.message);
       }
     };
-    getUser(userId);
+    getUser();
   }, []);
 
   const handleEditDescription = () => {
@@ -126,7 +126,7 @@ const AccountPage = () => {
                     <div className="user-info">
                       <div className="box">
                         <h2>Username: {accountUser.username}</h2>
-                        <h2>Joined at: {accountUser?.createdAt?.slice(0,
+                        <h2>Joined at: {accountUser.createdAt?.slice(0,
                             10)}</h2>
                       </div>
                       <div className="box">

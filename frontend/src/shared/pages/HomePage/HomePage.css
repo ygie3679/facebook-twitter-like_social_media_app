@@ -40,8 +40,6 @@ mid-column {
 .mid-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
 }

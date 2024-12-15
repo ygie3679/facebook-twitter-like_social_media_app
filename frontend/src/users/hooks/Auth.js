@@ -12,14 +12,14 @@ export const signup = async (email, username, password) => {
 export const signin = async (email, password) => {
   const response = await api.post(`${API_URL}/login`,
       {email, password})
-  return response
+  return response;
 }
 
 export const account = async (userId) => {
   // const response = await api.get(`${API_URL}/${userId}`)
   const response = await api.get(`${API_URL}/account`)
 
-  return response.data
+  return response.data;
 }
 
 export const logout = async () => {

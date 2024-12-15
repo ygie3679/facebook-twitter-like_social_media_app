@@ -77,16 +77,16 @@ const PostEditor = () => {
 
         {/* Display posts */}
         <div className="post-feed">
-          {posts.map((post, index) => (
+          {posts.map((newPost, index) => (
               <Post
                   key={index}
-                  content={post.content}
-                  timestamp={post.createdAt}
-                  username={post.userId.username}
-                  deletable={post.userId._id === user?.userId}
-                  postId={post._id}
+                  content={newPost.content}
+                  timestamp={newPost.createdAt}
+                  username={newPost.userId.username}
+                  deletable={newPost.userId._id === user?.userId}
+                  postId={newPost._id}
                   onFetchPost={fetchPosts}
-                  userId={post.userId._id} />
+                  userId={newPost.userId._id} />
           ))}
         </div>
       </div>

@@ -11,7 +11,7 @@ const UserLogo = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const {user, userSignin, checkLoggedIn, userSignup, logout} = useProfile()
+  const {user, userSignin, checkLoggedIn, userSignup, logout} = useProfile();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,10 +29,8 @@ const UserLogo = () => {
     const res = await userSignin(email, password);
 
     if (res) {
-      const userId = res.userId;
-      console.log(res.params);
-      console.log(userId);
       setModalOpen(false);
+      window.location.reload();
     }
   };
 
@@ -40,6 +38,7 @@ const UserLogo = () => {
     const res = await userSignup(email, username, password);
     if (res) {
       setModalOpen(false);
+      window.location.reload();
     }
   };
 

@@ -1,6 +1,5 @@
 import React, {useContext, useState} from "react";
 import * as service from "../users/hooks/Auth";
-import {putUserDescription} from "../users/hooks/Auth";
 
 const Profile_context = React.createContext();
 
@@ -20,7 +19,7 @@ export const ProfileProvider = ({children}) => {
         try {
             const response = await service.signin(email, password);
             if (response.status) {
-                setUser(response.data);
+                setUser(response);
             }
             console.log("Signed in!");
             return true;

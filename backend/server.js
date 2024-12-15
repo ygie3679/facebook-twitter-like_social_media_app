@@ -1,5 +1,3 @@
-// import user_controller from "./controllers/user_controller";
-// import posts_controller from "./controllers/posts_controller";
 const postsRoutes = require("./routes/posts_routes");
 const usersRoutes = require("./routes/users_routes");
 
@@ -7,9 +5,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
 const app = express();
 const cookieParser = require('cookie-parser');
+const PORT = process.env.PORT || 8000;
 
 // Middleware
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
@@ -33,6 +31,6 @@ app.get('/', (request, response) => {
   response.send("Welcome to WebDev");
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on http://localhost:8000`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
