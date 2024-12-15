@@ -51,8 +51,8 @@ const account = async (req, res) => {
   }
   try {
     const decoded = jwt.verify(token,
-        // process.env.JWT_PRIVATE_KEY
-        'super_secret'
+        process.env.JWT_PRIVATE_KEY
+        // 'super_secret'
     );
     const user  = await User.findOne({email: decoded.email});
     res.status(200).json({
@@ -105,8 +105,8 @@ const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
         {userId: newUser.id, email: newUser.email},
-        "super_secret",
-        // process.env.WT_PRIVATE_KEY,
+        // "super_secret",
+        process.env.WT_PRIVATE_KEY,
         {expiresIn: "7d"}
     );
   } catch (err) {
@@ -159,8 +159,8 @@ const login = async (req, res, next) => {
   try {
     token = jwt.sign(
         {userId: existingUser.id, email: existingUser.email},
-        "super_secret",
-        // process.env.JWT_PRIVATE_KEY,
+        // "super_secret",
+        process.env.JWT_PRIVATE_KEY,
         {expiresIn: "7d"}
     );
   } catch (err) {
