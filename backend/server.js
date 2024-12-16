@@ -20,7 +20,7 @@ app.use("/users", usersRoutes);
 
 // Connect to MongoDB
 //const mongoDBEndpoint = "mongodb+srv://yaji:12345@webdev5610.bf7sg.mongodb.net/?retryWrites=true&w=majority&appName=WebDev5610";
-const mongoDBEndpoint = process.env.MONGODB_URI
+const mongoDBEndpoint = process.env.MONGODB_URI || 'mongodb://127.0.0.1/collection_name';
 
 mongoose
 .connect(mongoDBEndpoint, { useNewUrlParser: true})
