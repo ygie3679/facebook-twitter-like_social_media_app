@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const cookieParser = require('cookie-parser');
 const PORT = process.env.PORT || 8000;
@@ -14,6 +15,13 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
+// Serve React Frontend Static Files
+app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+
+// Catch-all route to serve React's index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
+});
 
 app.use("/posts", postsRoutes);
 app.use("/users", usersRoutes);
